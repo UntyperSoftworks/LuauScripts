@@ -1,7 +1,7 @@
 -- Creates "hidden tables" from existing tables using userdata
-return function(t: {[any]: any}): any
+return function(t: {[any]: any}, destroyTable: boolean?): any
 	local t2 = table.clone(t)
-	table.clear(t)
+	if destroyTable then table.clear(t) end
 
 	local proxy = newproxy(true)
 	local mt = getmetatable(proxy)
