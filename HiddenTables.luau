@@ -7,7 +7,7 @@ return function(t: {[any]: any}, destroyTable: boolean?): any
 	local mt = getmetatable(proxy)
 
 	rawset(mt, "__index", t2)
-	rawset(mt, "__namecall", function(_, key, value)
+	rawset(mt, "__newindex", function(_, key, value)
 		rawset(t2, key, value)
 	end)
 	rawset(mt, "__metatable", "Hidden table")
